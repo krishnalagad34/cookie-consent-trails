@@ -3,6 +3,52 @@
 let userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
 console.log("Browser Language Code: ", userLang);
 
+function parseConfigPayload(payload) {
+    let parsed = payload;
+
+    while (typeof parsed === 'string') {
+        try {
+            parsed = JSON.parse(parsed);
+        } catch (error) {
+            const sanitized = parsed.replace(/(^|[\r\n])\s*"?lang"?\s*:\s*userLang\s*,?\s*(?=[\r\n])/g, '$1');
+            parsed = JSON.parse(sanitized);
+        }
+    }
+
+    const wrapperKeys = ['response', 'data', 'config', 'result'];
+    for (const key of wrapperKeys) {
+        if (parsed && typeof parsed === 'object' && parsed[key]) {
+            return parseConfigPayload(parsed[key]);
+        }
+    }
+
+    return parsed;
+}
+
+function normalizeKlaroConfig(config) {
+    if (!config || typeof config !== 'object') {
+        throw new Error('Seqrite config API did not return a valid object.');
+    }
+
+    if (!Array.isArray(config.services) && Array.isArray(config.apps)) {
+        config.services = config.apps;
+    }
+
+    if (!Array.isArray(config.services)) {
+        console.warn(
+            'Seqrite config is missing a services array. Falling back to category-level services.',
+            config
+        );
+        config.services = [
+            { name: 'marketing', purposes: ['marketing'], default: true },
+            { name: 'others', purposes: ['others'], default: true },
+            { name: 'functional', purposes: ['functional'], default: true }
+        ];
+    }
+
+    return config;
+}
+
 async function initializeCookieConsent() {
     try {
 
@@ -26,10 +72,14 @@ async function initializeCookieConsent() {
             }
         });
 
+        if (!response.ok) {
+            throw new Error(`Config fetch failed with HTTP ${response.status}`);
+        }
+
         const configString = await response.text();
         
         // Parse the stringified JSON
-        const configObject = JSON.parse(configString);
+        const configObject = normalizeKlaroConfig(parseConfigPayload(configString));
         
         // Inject the client-side user language just like the original script did
         configObject.lang = userLang;
@@ -40,7 +90,7 @@ async function initializeCookieConsent() {
         // Dynamically load seqrite.js so it executes AFTER the config is set
         const seqriteScript = document.createElement('script');
         seqriteScript.type = 'application/javascript';
-        seqriteScript.dataset.config = 'seqriteConfig';
+        seqriteScript.dataset.klaroConfig = 'klaroConfig';
         seqriteScript.src = 'seqrite.js';
         
         // Ensure seqrite-enforcement.js loads AFTER seqrite.js finishes executing
@@ -61,5 +111,3 @@ async function initializeCookieConsent() {
 
 // Execute the initialization
 initializeCookieConsent();
-
-showCookie();

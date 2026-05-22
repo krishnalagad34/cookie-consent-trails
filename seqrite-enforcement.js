@@ -40,7 +40,20 @@ window.PrivacyConsent = (function() {
     if (_manager) return; // Guard: already initialized
     if (config) window.klaroConfig = config;
     _engine  = window.klaro;
-    _manager = _engine.getManager();
+    if (!_engine || typeof _engine.getManager !== 'function') {
+      console.error('[PrivacyConsent] Seqrite/Klaro engine is not ready.');
+      return;
+    }
+    _manager = _engine.getManager(window.klaroConfig);
+    if (window.klaroConfig && Array.isArray(window.klaroConfig.services)) {
+      _services = window.klaroConfig.services.map(function(service) {
+        return {
+          name: service.name,
+          category: service.category || (service.purposes && service.purposes[0]) || service.name,
+          default: service.default === true
+        };
+      });
+    }
     _manager.watch({
       update: function(obj, name, data) {
         if (name === 'consents') {
