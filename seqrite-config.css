@@ -15,10 +15,10 @@
       --banner-body-background-color: #fafafa;
       --overlay-body-text-color: #43436c;
       --overlay-body-background-color: #f9f9ff;
-      --overlay-position-left: auto;
-      --overlay-position-Top: auto;
-      --overlay-pos: fixed;
-      --overlay-max-width-custom: revert-layer;;
+      --overlay-position-left: undefined;
+      --overlay-position-Top: undefined;
+      --overlay-pos: undefined;
+      --overlay-max-width-custom: undefined;
     }
     
 .klaro {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -94,7 +95,10 @@
             background-color: #0056b3;
         }
     </style>
-    <link rel="stylesheet" href="seqrite-config.css"/>
+    <link rel="stylesheet" href="seqrite-config.css" />
+    <!-- <script data-config="seqriteConfig" type="application/javascript" src="seqrite.js"></script> -->
+    <script type="application/javascript" src="seqrite-config.js"></script>
+    <!-- <script defer src="seqrite-enforcement.js"></script> -->
 </head>
 
 <body>
@@ -171,39 +175,39 @@
         </p>
     </footer>
 
-     <script>
-        
-         // 1. Authentication Token (Essential)
+    <script>
+
+        // 1. Authentication Token (Essential)
         document.cookie = "auth_token=eyJhbGciOiJIUzI1NiI...; max-age=1800; path=/; secure; SameSite=Strict";
-        
+
         // 2. User Preferences / Theme (Functional)
         document.cookie = "theme=dark; max-age=31536000; path=/; SameSite=Lax";
-        
+
         // 3. Shopping Cart ID (Functional)
         document.cookie = "cart_id=shop_99887766; max-age=604800; path=/; SameSite=Lax";
-        
+
         // 4. CSRF Security Token (Essential)
         document.cookie = "XSRF-TOKEN=a1b2c3d4e5f6; max-age=86400; path=/; secure; SameSite=Strict";
-        
+
         // 5. Cookie Consent Choice (Essential/Functional)
         document.cookie = "cookie_consent=accepted; max-age=31536000; path=/; SameSite=Lax";
-        
+
         // 6. User Preferred Language (Functional)
         document.cookie = "lang=en-US; max-age=31536000; path=/; SameSite=Lax";
-        
+
         // 7. A/B Testing Experiment ID (Analytics)
         document.cookie = "ab_test_bucket=variant_b; max-age=604800; path=/; SameSite=Lax";
-        
+
         // 8. Performance/Load Balancer Affinitiy (Essential)
         document.cookie = "SERVERID=srv_node_04; path=/; SameSite=Lax";
-        
+
         // 9. Ad Campaign Attribution (Marketing)
         document.cookie = "utm_campaign=summer_sale_2026; max-age=2592000; path=/; SameSite=Lax";
-        
+
         // 10. User Location Hint (Functional)
         document.cookie = "country_hint=IN; max-age=86400; path=/; SameSite=Lax";
 
-         // 1. Essential/Necessary Cookie
+        // 1. Essential/Necessary Cookie
         document.cookie = "session_id=xyz1234; max-age=86400; path=/; SameSite=Lax";
         // 2. Analytics Cookie (Simulating Google Analytics)
         document.cookie = "_ga=GA1.2.9876543214; max-age=63072000; path=/; SameSite=Lax";
@@ -211,11 +215,6 @@
         document.cookie = "_fbp=fb.1.11223344554; max-age=7776000; path=/; SameSite=Lax";
     </script>
 
-    
-  
-  <script data-config="seqriteConfig" type="application/javascript" src="seqrite.js"></script>
-  <script type="application/javascript" src="seqrite-config.js"></script>
-  <script defer src="seqrite-enforcement.js"></script>
-
 </body>
+
 </html>
