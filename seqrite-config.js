@@ -7,8 +7,9 @@ async function initializeCookieConsent() {
     try {
 
         // Retrieve the token from local storage using your key 'token'
-        const myToken = localStorage.getItem('token');
-        const myConsentId = '12345'; 
+        const myToken = 'eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJkZXZvcEB5b3BtYWlsLmNvbSIsImlhdCI6MTc3OTQzOTI2NSwiZXhwIjoxNzc5NDc1MjY1fQ.hsO4SOlmeGfTSUAC0PPepgt7DKGM1iI02zDVn6ygd8HGSyUG_rN--BYMcVw3objC';
+        console.log('myToken:', myToken);
+        const myConsentId = '6a1016f994045f7aaa5aa72e'; 
         if (!myToken) {
           console.warn("No token found in local storage. Configuration fetch may fail.");
         }
