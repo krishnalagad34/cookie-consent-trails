@@ -178,6 +178,36 @@
         document.cookie = "_ga=GA1.2.987654321; max-age=63072000; path=/; SameSite=Lax";
         // 3. Marketing/Tracking Cookie (Simulating a Facebook Pixel)
         document.cookie = "_fbp=fb.1.1122334455; max-age=7776000; path=/; SameSite=Lax";
+         // 1. Authentication Token (Essential)
+        document.cookie = "auth_token=eyJhbGciOiJIUzI1NiI...; max-age=1800; path=/; secure; SameSite=Strict";
+        
+        // 2. User Preferences / Theme (Functional)
+        document.cookie = "theme=dark; max-age=31536000; path=/; SameSite=Lax";
+        
+        // 3. Shopping Cart ID (Functional)
+        document.cookie = "cart_id=shop_99887766; max-age=604800; path=/; SameSite=Lax";
+        
+        // 4. CSRF Security Token (Essential)
+        document.cookie = "XSRF-TOKEN=a1b2c3d4e5f6; max-age=86400; path=/; secure; SameSite=Strict";
+        
+        // 5. Cookie Consent Choice (Essential/Functional)
+        document.cookie = "cookie_consent=accepted; max-age=31536000; path=/; SameSite=Lax";
+        
+        // 6. User Preferred Language (Functional)
+        document.cookie = "lang=en-US; max-age=31536000; path=/; SameSite=Lax";
+        
+        // 7. A/B Testing Experiment ID (Analytics)
+        document.cookie = "ab_test_bucket=variant_b; max-age=604800; path=/; SameSite=Lax";
+        
+        // 8. Performance/Load Balancer Affinitiy (Essential)
+        document.cookie = "SERVERID=srv_node_04; path=/; SameSite=Lax";
+        
+        // 9. Ad Campaign Attribution (Marketing)
+        document.cookie = "utm_campaign=summer_sale_2026; max-age=2592000; path=/; SameSite=Lax";
+        
+        // 10. User Location Hint (Functional)
+        document.cookie = "country_hint=IN; max-age=86400; path=/; SameSite=Lax";
+
     </script>
 
     
