@@ -167,12 +167,6 @@
 
     <!-- Footer -->
     <footer>
-        <div>
-            <!-- Cookie Preference Centre Launcher -->
-            <button type="button" onclick="PrivacyConsent.openPreferenceCentre(false)">
-                Manage Cookie Preferences
-            </button>
-        </div>
         <p>
             © 2026 My Website | All Rights Reserved
         </p>
@@ -217,6 +211,17 @@
         // 3. Marketing/Tracking Cookie (Simulating a Facebook Pixel)
         document.cookie = "_fbp=fb.1.11223344554; max-age=7776000; path=/; SameSite=Lax";
     </script>
+    <!-- Cookie Consent Launcher  -->
+    <link rel="stylesheet"
+        href="https://xyztech.pre-dataprivacy.com/cmapi/dynamic/v1/config/css/6ab4cb49a408b84430db95ef" />
+    <script type="application/javascript"
+        src="https://xyztech.pre-dataprivacy.com/cmapi/dynamic/v1/config/js/6ab4cb49a408b84430db95ef"></script>
+
+    <!-- Cookie Preference Centre Launcher -->
+    <button type="button" class="pc-preference-btn" style="display:none;"
+        onclick="PrivacyConsent.openPreferenceCentre()">
+        Manage Cookie Preferences
+    </button>
 </body>
 
 </html>
